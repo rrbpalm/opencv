@@ -243,7 +243,8 @@ T* allocSingleton(size_t count) { return static_cast<T*>(fastMalloc(sizeof(T) * 
 #define CV_IPP_MALLOC(SIZE) ippMalloc((int)SIZE)
 #endif
 
-#define setIppErrorStatus() cv::ipp::setIppStatus(-1, CV_Func, __FILE__, __LINE__)
+//#define setIppErrorStatus() cv::ipp::setIppStatus(-1, CV_Func, __FILE__, __LINE__)
+#define setIppErrorStatus() cv::ipp::setIppStatus(-1, CV_Func, "", 0)
 
 #if IPP_VERSION_X100 >= 201700
 #define ippCPUID_AVX512_SKX (ippCPUID_AVX512F|ippCPUID_AVX512CD|ippCPUID_AVX512VL|ippCPUID_AVX512BW|ippCPUID_AVX512DQ)
