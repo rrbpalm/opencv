@@ -535,7 +535,8 @@ cvCreateMap( int flags, int header_size, int elem_size,
 }
 
 #define CV_PARSE_ERROR( errmsg )                                    \
-    icvParseError( fs, CV_Func, (errmsg), __FILE__, __LINE__ )
+    //icvParseError( fs, CV_Func, (errmsg), __FILE__, __LINE__ )
+    icvParseError( fs, CV_Func, "", "", 0 )//icvParseError( fs, CV_Func, (errmsg), __FILE__, __LINE__ )
 
 static void
 icvParseError( CvFileStorage* fs, const char* func_name,
