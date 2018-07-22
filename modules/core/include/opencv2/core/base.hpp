@@ -429,7 +429,7 @@ configuration, the exception is thrown.
 @param code one of Error::Code
 @param msg error message
 */
-#define CV_Error( code, msg ) cv::error( code, msg, CV_Func, __FILE__, __LINE__ )
+#define CV_Error( code, msg ) cv::error( code, "", CV_Func, "", __LINE__ )
 
 /**  @brief Call the error handler.
 
@@ -443,7 +443,7 @@ for example:
 @param code one of Error::Code
 @param args printf-like formatted error message in parentheses
 */
-#define CV_Error_( code, args ) cv::error( code, cv::format args, CV_Func, __FILE__, __LINE__ )
+#define CV_Error_( code, args ) cv::error( code, "", CV_Func, "", __LINE__ )
 
 /** @brief Checks a condition at runtime and throws exception if it fails
 
@@ -455,7 +455,7 @@ configurations while CV_DbgAssert is only retained in the Debug configuration.
 #define CV_VA_NUM_ARGS_HELPER(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, N, ...)    N
 #define CV_VA_NUM_ARGS(...)      CV_VA_NUM_ARGS_HELPER(__VA_ARGS__, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-#define CV_Assert_1( expr ) if(!!(expr)) ; else cv::error( cv::Error::StsAssert, #expr, CV_Func, __FILE__, __LINE__ )
+#define CV_Assert_1( expr ) if(!!(expr)) ; else cv::error( cv::Error::StsAssert, "", CV_Func, "", __LINE__ )
 #define CV_Assert_2( expr1, expr2 ) CV_Assert_1(expr1); CV_Assert_1(expr2)
 #define CV_Assert_3( expr1, expr2, expr3 ) CV_Assert_2(expr1, expr2); CV_Assert_1(expr3)
 #define CV_Assert_4( expr1, expr2, expr3, expr4 ) CV_Assert_3(expr1, expr2, expr3); CV_Assert_1(expr4)
@@ -469,16 +469,16 @@ configurations while CV_DbgAssert is only retained in the Debug configuration.
 #define CV_Assert(...)               CVAUX_CONCAT(CV_Assert_, CV_VA_NUM_ARGS(__VA_ARGS__)) (__VA_ARGS__)
 
 /** same as CV_Error(code,msg), but does not return */
-#define CV_ErrorNoReturn( code, msg ) cv::errorNoReturn( code, msg, CV_Func, __FILE__, __LINE__ )
+#define CV_ErrorNoReturn( code, msg ) cv::errorNoReturn( code, "", CV_Func, "", __LINE__ )
 
 /** same as CV_Error_(code,args), but does not return */
-#define CV_ErrorNoReturn_( code, args ) cv::errorNoReturn( code, cv::format args, CV_Func, __FILE__, __LINE__ )
+#define CV_ErrorNoReturn_( code, args ) cv::errorNoReturn( code, "", CV_Func, "", __LINE__ )
 
 #endif // CV_STATIC_ANALYSIS
 
 /** replaced with CV_Assert(expr) in Debug configuration */
 #ifdef _DEBUG
-#  define CV_DbgAssert(expr) CV_Assert(expr)
+#  define CV_DbgAssert(expr) if(!!(expr)) ; else cv::error( cv::Error::StsAssert, #expr, CV_Func, __FILE__, __LINE__ )
 #else
 #  define CV_DbgAssert(expr)
 #endif
