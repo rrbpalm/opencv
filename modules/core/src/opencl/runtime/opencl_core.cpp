@@ -322,8 +322,9 @@ static void* opencl_check_fn(int ID)
     if (!func)
     {
         throw cv::Exception(cv::Error::OpenCLApiCallError,
-                cv::format("OpenCL function is not available: [%s]", e->fnName),
-                CV_Func, __FILE__, __LINE__);
+                //cv::format("OpenCL function is not available: [%s]", e->fnName),
+                //CV_Func, __FILE__, __LINE__);
+                            "", CV_Func, "", 0);
     }
     *(e->ppFn) = func;
     return func;
