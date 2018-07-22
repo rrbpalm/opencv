@@ -401,9 +401,9 @@ CV_INLINE CV_NORETURN void errorNoReturn(int _code, const String& _err, const ch
 #endif
 
 #if defined __GNUC__
-#define CV_Func __func__
+#define CV_Func ""
 #elif defined _MSC_VER
-#define CV_Func __FUNCTION__
+#define CV_Func ""
 #else
 #define CV_Func ""
 #endif
