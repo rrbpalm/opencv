@@ -3659,10 +3659,10 @@ struct Program::Impl
         }
 
         errmsg = String(buffer);
-        printf("OpenCL program build log: %s/%s\nStatus %d: %s\n%s\n%s\n",
+        /*printf("OpenCL program build log: %s/%s\nStatus %d: %s\n%s\n%s\n",
                 sourceModule_.c_str(), sourceName_.c_str(),
                 result, getOpenCLErrorString(result),
-                buildflags.c_str(), errmsg.c_str());
+                buildflags.c_str(), errmsg.c_str());*/
         fflush(stdout);
     }
 
