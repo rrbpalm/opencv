@@ -100,7 +100,8 @@ namespace
     }
     #endif
 
-    #define CV_CheckGlError() CV_DbgAssert( (checkError(__FILE__, __LINE__, CV_Func)) )
+    //#define CV_CheckGlError() CV_DbgAssert( (checkError(__FILE__, __LINE__, CV_Func)) )
+    #define CV_CheckGlError() CV_DbgAssert( (checkError("", 0, CV_Func)) )
 } // namespace
 
 #ifdef HAVE_OPENGL
