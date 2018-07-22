@@ -53,7 +53,11 @@ foreach(cl ${cl_list})
   get_filename_component(cl_filename "${cl}" NAME_WE)
   #message("${cl_filename}")
 
-  file(READ "${cl}" lines)
+  if(HAVE_OPENCL)
+    file(READ "${cl}" lines)
+  else()
+    get_filename_component(lines "${cl}" NAME_WE)
+  endif()
 
   string(REPLACE "\r" "" lines "${lines}\n")
   string(REPLACE "\t" "  " lines "${lines}")
