@@ -288,11 +288,11 @@ bool cv::DetectionBasedTracker::SeparateDetectionWork::run()
         _block;                                                                             \
     }                                                                                       \
     CV_CATCH(cv::Exception, e) {                                                               \
-        LOGE0("\n %s: ERROR: OpenCV Exception caught: \n'%s'\n\n", CV_Func, e.what());      \
+        LOGE0(/*"\n %s: ERROR: OpenCV Exception caught: \n'%s'\n\n"*/"", CV_Func, e.what());      \
     } CV_CATCH(std::exception, e) {                                                            \
-        LOGE0("\n %s: ERROR: Exception caught: \n'%s'\n\n", CV_Func, e.what());             \
+        LOGE0(/*"\n %s: ERROR: Exception caught: \n'%s'\n\n"*/"", CV_Func, e.what());             \
     } CV_CATCH_ALL {                                                                          \
-        LOGE0("\n %s: ERROR: UNKNOWN Exception caught\n\n", CV_Func);                       \
+        LOGE0(/*"\n %s: ERROR: UNKNOWN Exception caught\n\n"*/"", CV_Func);                       \
     }
 
 void* cv::workcycleObjectDetectorFunction(void* p)
