@@ -73,13 +73,11 @@
 #include "opencv2/video/tracking.hpp"
 #include "opencv2/video/background_segm.hpp"
 #include "opencv2/objdetect.hpp"
-#include "opencv2/dnn.hpp"
 
 #include <emscripten/bind.h>
 
 using namespace emscripten;
 using namespace cv;
-using namespace dnn;
 
 namespace binding_utils
 {
@@ -478,10 +476,10 @@ EMSCRIPTEN_BINDINGS(binding_utils)
     function("rotatedRectBoundingRect2f", select_overload<Rect2f(const cv::RotatedRect&)>(&binding_utils::rotatedRectBoundingRect2f));
 
     emscripten::value_array<cv::Scalar_<double>> ("Scalar")
-        .element(index<0>())
-        .element(index<1>())
-        .element(index<2>())
-        .element(index<3>());
+        .element(emscripten::index<0>())
+        .element(emscripten::index<1>())
+        .element(emscripten::index<2>())
+        .element(emscripten::index<3>());
 
     emscripten::value_object<binding_utils::MinMaxLoc>("MinMaxLoc")
         .field("minVal", &binding_utils::MinMaxLoc::minVal)
