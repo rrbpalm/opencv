@@ -72,7 +72,6 @@
 #include "opencv2/imgproc.hpp"
 #include "opencv2/video/tracking.hpp"
 #include "opencv2/video/background_segm.hpp"
-#include "opencv2/objdetect.hpp"
 
 #include <emscripten/bind.h>
 
