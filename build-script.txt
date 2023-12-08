@@ -1,0 +1,111 @@
+####### standard build ######
+cmake -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=~/wasm/polly/clang-libcxx-hid-sections.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_OPENCV_WORLD=ON \
+    -DBUILD_DOCS=OFF \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_JPEG=ON \
+    -DBUILD_PERF_TESTS=OFF \
+    -DBUILD_PNG=ON \
+    -DBUILD_TESTS=OFF \
+    -DBUILD_TIFF=OFF \
+    -DBUILD_CUDA_STUBS=OFF \
+    -DBUILD_IPP_IW=OFF \
+    -DBUILD_ITT=OFF \
+    -DBUILD_JASPER=OFF \
+    -DBUILD_OPENEXR=OFF \
+    -DBUILD_TBB=OFF \
+    -DBUILD_WITH_DYNAMIC_IPP=OFF \
+    -DBUILD_opencv_python2=OFF \
+    -DBUILD_opencv_java=OFF \
+    -DBUILD_opencv_dnn=OFF \
+    -DBUILD_opencv_flann=OFF \
+    -DBUILD_opencv_python_bindings_generator=OFF \
+    -DBUILD_opencv_superres=OFF \
+    -DBUILD_opencv_ts=OFF \
+    -DBUILD_opencv_photo=OFF \
+    -DBUILD_opencv_ml=OFF \
+    -DBUILD_opencv_shape=OFF \
+    -DBUILD_opencv_objdetect=OFF \
+    -DBUILD_opencv_world=ON \
+    -DWITH_CUDA=OFF \
+    -DWITH_CUFFT=OFF \
+    -DWITH_GTK=OFF \
+    -DWITH_IPP=OFF \
+    -DWITH_IPP_A=OFF \
+    -DWITH_MATLAB=OFF \
+    -DWITH_VTK=OFF \
+    -DWITH_1394=OFF \
+    -DWITH_GPHOTO2=OFF \
+    -DWITH_GSTREAMER=OFF \
+    -DWITH_ITT=OFF \
+    -DWITH_JASPER=OFF \
+    -DWITH_MATLAB=OFF \
+    -DWITH_OPENEXR=OFF \
+    -DWITH_TBB=OFF \
+    -DWITH_WEBP=OFF \
+    -DWITH_TIFF=OFF \
+    -DENABLE_NEON=ON \
+    ..
+cmake --build .
+make install
+
+
+####### wasm bulid ######
+~/wasm/emsdk/upstream/emscripten/emcmake \
+cmake -G "Unix Makefiles" \
+    -DCMAKE_TOOLCHAIN_FILE=~/wasm/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_OPENCV_WORLD=ON \
+    -DENABLE_CXX11=ON \
+    -DBUILD_DOCS=OFF \
+    -DBUILD_EXAMPLES=OFF \
+    -DBUILD_JPEG=ON \
+    -DBUILD_PERF_TESTS=OFF \
+    -DBUILD_PNG=ON \
+    -DBUILD_TESTS=OFF \
+    -DBUILD_TIFF=OFF \
+    -DBUILD_CUDA_STUBS=OFF \
+    -DBUILD_IPP_IW=OFF \
+    -DBUILD_ITT=OFF \
+    -DBUILD_JASPER=OFF \
+    -DBUILD_OPENEXR=OFF \
+    -DBUILD_TBB=OFF \
+    -DBUILD_WITH_DYNAMIC_IPP=OFF \
+    -DBUILD_opencv_python2=OFF \
+    -DBUILD_opencv_java=OFF \
+    -DBUILD_opencv_dnn=OFF \
+    -DBUILD_opencv_flann=OFF \
+    -DBUILD_opencv_python_bindings_generator=OFF \
+    -DBUILD_opencv_superres=OFF \
+    -DBUILD_opencv_ts=OFF \
+    -DBUILD_opencv_photo=OFF \
+    -DBUILD_opencv_ml=OFF \
+    -DBUILD_opencv_shape=OFF \
+    -DBUILD_opencv_objdetect=OFF \
+    -DBUILD_opencv_world=ON \
+    -DWITH_CUDA=OFF \
+    -DWITH_CUFFT=OFF \
+    -DWITH_GTK=OFF \
+    -DWITH_IPP=OFF \
+    -DWITH_IPP_A=OFF \
+    -DWITH_MATLAB=OFF \
+    -DWITH_VTK=OFF \
+    -DWITH_1394=OFF \
+    -DWITH_GPHOTO2=OFF \
+    -DWITH_GSTREAMER=OFF \
+    -DWITH_ITT=OFF \
+    -DWITH_JASPER=OFF \
+    -DWITH_MATLAB=OFF \
+    -DWITH_OPENEXR=OFF \
+    -DWITH_TBB=OFF \
+    -DWITH_WEBP=OFF \
+    -DWITH_TIFF=OFF \
+    -DENABLE_NEON=ON \
+    -DBUILD_opencv_js=ON \
+    -DBUILD_PERF_TESTS=OFF \
+    ..
+cmake --build .
+make install
