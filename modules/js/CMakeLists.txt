@@ -61,7 +61,12 @@ add_custom_command(
 
 add_definitions("-std=c++11")
 
-link_libraries(${OPENCV_MODULE_${the_module}_DEPS})
+if(BUILD_OPENCV_WORLD)
+    message("==========link with opencv world only==========")
+    link_libraries("opencv_world")
+else()
+    link_libraries(${OPENCV_MODULE_${the_module}_DEPS})
+endif()
 
 ocv_add_executable(${the_module} ${bindings_cpp})
 
