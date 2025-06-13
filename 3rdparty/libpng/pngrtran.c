@@ -17,6 +17,7 @@
  */
 
 #include "pngpriv.h"
+#include <math.h>
 
 #ifdef PNG_READ_SUPPORTED
 

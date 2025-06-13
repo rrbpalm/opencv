@@ -514,7 +514,7 @@
     * as it seems it doesn't agree with <fp.h>, yet we should really use
     * <fp.h> if possible.
     */
-#    if !defined(__MATH_H__) && !defined(__MATH_H) && !defined(__cmath__)
+#    if (defined(macintosh) && !defined(__APPLE__)) || defined(__MWERKS__) || defined(applec) || defined(THINK_C)
 #      include <fp.h>
 #    endif
 #  else
